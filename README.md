@@ -35,7 +35,7 @@ Then any resource has a way to map the HTTP verbs to the resource verbs and by d
 
 
 
-Taylored Resources
+Tailored Resources
 ==================
 
 django-rest came with a basic ResourceModel that it use the django orm as backend to create the resources.
