@@ -1,4 +1,4 @@
-from types import MetaType
+from meta import MetaClass
 import copy
 from UserDict import UserDict
 
@@ -19,7 +19,7 @@ class ResourceBase(object):
     
     """
 
-    __metaclass__ = MetaType
+    __metaclass__ = MetaClass
 
     class Meta(object):
         " Some nice defaults."
@@ -30,39 +30,7 @@ class ResourceBase(object):
         self._meta = copy.copy(self._meta)        
         self._meta.update(kwargs)
         
-    # def dispatch_action(self, request):
-    #     " Action dispatcher."
-
-    #     # Is in general the action allowed?
-    #     if request.action not in self._meta.allowed_actions:
-    #         return self.ActionNotAllowed(request)
-
-    #     # Throttle by action
-
-    #     # If the user pass credentials but this fails do we assume is anonymous?
-        
-    #     # Throttle by action and user.
-
-    #     # Does this user can try to perform this action?
-
-    #     # Is the data valid for the action?
-    #     # Throttle by action, user and data.
-        
-    #     # Now the data is valid we can checck effectively if the user can perform the action.
-
-    #     # Perform.
-
-    #     ### Error :(
-
-    # def __setattr__(self, name, value):
-
-    #     # If there is a field defined for this field name delegate to it.
-    #     if name in self._meta.fields:
-    #         self.__dict__[name] = self._meta.fields[name].set(self, name, value)
-
-    #     # Otherwise just put it:
-    #     self.__dict__[name] = value
-        
+                        
     
 class Collection(ResourceBase):
     """
@@ -102,31 +70,6 @@ class Collection(ResourceBase):
     class ResourceNotFound(Exception):
         pass
     
-    # def dispatch(self, request):
-    #     " Dispatch a particular action."
-
-    #     # Check what kind of action the client want to perform, and remove it from
-    #     # the request to avoid dual information.
-    #     action = getattr(request, 'action', 'noaction')
-    #     print action
-
-    #     if hasattr(request, 'action'):
-    #         delattr(request, 'action')
-
-    #     # Gather the method that will perform the action.
-    #     action_method = getattr(self, action)
-
-    #     # We need to solve some question first:
-    #     # 0) Dummy throttle.
-    #     # 1) Who is the client?
-    #     # 2) Can the client perform this action?
-    #     # 3) Is the data at least type valid?
-    #     # 4) Is the data 'business' valid?
-    #     # 5) Smart throttle
-
-    #     # Finally perform the action.
-    #     return action_method(request)
-
     def __getitem__(self, value):
         """ 
         If we call this is because we want to lookup a particular
@@ -146,7 +89,7 @@ class Collection(ResourceBase):
         cid = self._counter = self._counter + 1
         
         # Save in local storage.
-        self._storage[cid] = self._meta.resource_class(_cid=cid, **kwargs)
+        self._storage[cid] = self._meta['resource_class'](_cid=cid, **kwargs)
         
         return self._storage[cid]
 
