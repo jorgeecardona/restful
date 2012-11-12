@@ -36,6 +36,8 @@ class MetaType(type):
                 if not name.startswith('_'):
                     setattr(meta, name, getattr(attrs['Meta'], name))
 
+        # TODO: I don't like this in here, this should be just for resources 
+        # and not for collections.'
         # Look up for fields.
         if not hasattr(meta, 'fields'):
             setattr(meta, 'fields', {})
