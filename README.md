@@ -4,6 +4,25 @@ Restful
 
 Create general restful api's, without http constraints, but with batteries for http.
 
+Goals
+=====
+
+This is the basic list of goals for restful:
+
+1) Be able to use it not only in http context but also as a library.
+
+2) Batteries included for django orm.
+
+3) Avoid problems with nose discovery.
+
+4) Allow easy checking of permissions.
+
+5) Keep the api as descriptive as possible
+
+6) Automatic documentation.
+
+7) Use some nice python code like vars(models) must return always the set of attributes.
+
 
 Resources
 =========

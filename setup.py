@@ -7,6 +7,5 @@ setup(
     author_email='jorge@cardona.co',
     packages=['restful'],
     test_suite='tests',
-    setup_requires=[
-        'unittest2',
-        ])
+    install_requires=['decorator']
+    )
