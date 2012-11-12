@@ -30,3 +30,33 @@ This is the basic list of goals for restful:
 5) Keep the api as descriptive as possible
 
 6) Automatic documentation.
+
+
+
+Usage (for now)
+===============
+
+Basic usage of collections for now is likes this:
+
+        from restful.resource import Collection, Resource
+
+        # Add collection to it.
+        users = Collection(resource_class=Resource)
+
+        # Create an user.
+        user = users.create(name='pedro')
+        self.assertEqual(user.name, 'pedro')
+
+        # Retrieve an user.
+        user = users.retrieve(_cid=user._cid)        
+        self.assertEqual(user.name, 'pedro')
+        
+        user = users[user._cid]
+        self.assertEqual(user.name, 'pedro')
+
+        # Delete an user.
+        users.delete(_cid=user._cid)
+
+        # Retrieve just deleted user must raise an error.
+        with self.assertRaises(users.ResourceNotFound):
+            users[user._cid]
