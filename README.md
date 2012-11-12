@@ -2,6 +2,9 @@
 Restful
 =======
 
+[![Build Status](https://travis-ci.org/jorgeecardona/restful.png)](https://travis-ci.org/jorgeecardona/restful)
+
+
 Create general restful api's, without http constraints, but with batteries for http.
 
 Goals
